@@ -13,7 +13,7 @@ DynamicDisplayItem: Updatable display item (so you can use it like actual teleme
 MultiModifier: Wrapped modifiers all in one line (helpful for pose)
 
 # Basic usage
-
+```
 public void init() {
         menuSystem = new MenuSystem(telemetry, gamepad1);
 
@@ -28,6 +28,9 @@ public void init() {
     }
 # SAMPLE OPMODE (PLS USE THIS FOR TESTING)
 
+```
+# Pls use this for testing! :D
+```
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -60,5 +63,4 @@ public class MenuTest extends OpMode {
         if (mode != null) telemetry.addLine("Current Mode: " + mode.getSelectedOption());
         telemetry.update();
     }
-}
-
+```
