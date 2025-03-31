@@ -2,11 +2,11 @@
 A fully functioning menu ran completely through the FTC telemetry system. Capable of running actions, changing values/booleans, selecting from lists and more!
 
 # Features
-Actions: Menu items that when pressed, allow you to run any runnable
-Modifiers: Doubles that can be increased/decreased by a customizable factor
-Togglables: Boolean values with an on/off displayName
-ListOptions: Allows you to select a string from a list of strings
-DisplayItems: Shows text on a display
+Actions: Menu items that when pressed, allow you to run any runnable \
+Modifiers: Doubles that can be increased/decreased by a customizable factor \
+Togglables: Boolean values with an on/off displayName \
+ListOptions: Allows you to select a string from a list of strings \
+DisplayItems: Shows text on a display \
 
 (Planned features:)
 DynamicDisplayItem: Updatable display item (so you can use it like actual telemetry)
