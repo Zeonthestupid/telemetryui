@@ -1,5 +1,7 @@
 package telemetryui;
 
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +45,9 @@ public class Menu {
         menuItems.add(modifier);
     }
 
-    public void addDisplayItem(String displayName) {
-        displayItem displayitem = new displayItem(displayName);
+    public void addDisplayItem(String id , String displayName) {
+        displayItem displayitem = new displayItem(id, displayName);
         displayitems.add(displayitem);
-        menuItems.add(displayitem);
     }
 
     public void addListOption(String displayName, String... options) {
@@ -56,7 +57,9 @@ public class Menu {
     }
 
     public void addmultimodifier(String displayName, Modifier... options) {
-        //finish this
+        MultiModifier mmod = new MultiModifier(displayName, options);
+        multimodifiers.add(mmod);
+        menuItems.add(mmod);
     }
 
     public void addToggleable(String offname, String onname, Boolean State) {
@@ -84,6 +87,14 @@ public class Menu {
         return null;
     }
 
+    public void changedisplay(String id, String newDisplay) {
+        for (displayItem displayitem: displayitems) {
+            if (displayitem.getid().equals(id)) {
+                displayitem.changeDisplayName(newDisplay);
+            }
+        }
+    }
+
 
     public void nextItem() {
         selectedIndex = (selectedIndex + 1) % menuItems.size();
@@ -103,6 +114,8 @@ public class Menu {
             ((ListOption) selectedItem).toggleSelecting();
         } else if (selectedItem instanceof Toggleable) {
             ((Toggleable) selectedItem).toggle();
+        } else if (selectedItem instanceof MultiModifier) {
+            ((MultiModifier) selectedItem).toggleModifyMode();
         }
     }
 
@@ -121,6 +134,32 @@ public class Menu {
             if (list.isSelecting()) {
                 if (increase) list.nextOption();
                 else list.previousOption();
+            }
+        }
+        else if (selectedItem instanceof MultiModifier) {
+            MultiModifier mmod = (MultiModifier) selectedItem;
+            if (mmod.isModifying()) {
+                if (increase) mmod.increase();
+                else mmod.decrease();
+            }
+        }
+    }
+
+    public void nextrow() {
+        Object selectedItem = menuItems.get(selectedIndex);
+        if (selectedItem instanceof MultiModifier) {
+            MultiModifier mmod = (MultiModifier) selectedItem;
+            if (!mmod.isModifying()) {
+                mmod.nextrow();
+            }
+        }
+    }
+    public void prevrow() {
+        Object selectedItem = menuItems.get(selectedIndex);
+        if (selectedItem instanceof MultiModifier) {
+            MultiModifier mmod = (MultiModifier) selectedItem;
+            if (mmod.isModifying()) {
+                mmod.prevrow();
             }
         }
     }

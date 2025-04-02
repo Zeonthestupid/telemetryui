@@ -4,6 +4,14 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
+/* How to add new menu items
+
+Create a new class under the TUI root, and import it to both the MenuSystem and the Menu Classes
+
+In your class include:
+- Some type of display method (
+*/
+
 public class MenuSystem {
     private final Telemetry telemetry;
     private final Gamepad gamepad;
@@ -25,7 +33,7 @@ public class MenuSystem {
         for (int i = 0; i < menu.getDisplayItems().size(); i++) {
             displayItem item = menu.getDisplayItems().get(i);
             if (item != null) {
-                telemetry.addLine( "- (" + item.getDisplayName() + " ) ");
+                telemetry.addLine( "- " + item.getDisplayName() + "  ");
             }
         }
 
@@ -54,8 +62,8 @@ public class MenuSystem {
                 MultiModifier m_modifier = (MultiModifier) item;
                 String telemetryOutput = "";
                 for (int j = 0; j < m_modifier.getitems().length; j++) {
-                    String selectingText = m_modifier.isModifying() ? "[" : " ";
-                    String selectingTexttwo = m_modifier.isModifying() ? "]" : " ";
+                    String selectingText = m_modifier.isModifying() ? "[" : "";
+                    String selectingTexttwo = m_modifier.isModifying() ? "]" : "";
                     // Put brackets around selected rows
                     String indextext = (m_modifier.getrow() == j) ? "(" : " ";
                     String indextexttwo = (m_modifier.getrow() == j) ? ")" : " ";
@@ -63,6 +71,10 @@ public class MenuSystem {
                     telemetryOutput = telemetryOutput + indextext + selectingText + m_modifier.getrowDisplayName() + m_modifier.getrowValue(i) + selectingTexttwo + indextexttwo;
                 }
                 telemetry.addLine(telemetryOutput);
+            }
+            else if (item instanceof Toggleable) {
+                Toggleable tgle = (Toggleable) item;
+                telemetry.addLine(tgle.getDisplayName());
             }
         }
         telemetry.update();
@@ -82,6 +94,9 @@ public class MenuSystem {
             else if (selectedItem instanceof ListOption && ((ListOption) selectedItem).isSelecting()) {
                 menu.modifySelected(true);
             }
+            else if (selectedItem instanceof MultiModifier && ((MultiModifier) selectedItem).isModifying()) {
+                menu.modifySelected(true);
+            }
             else {
                 menu.previousItem();
             }
@@ -94,6 +109,9 @@ public class MenuSystem {
             else if (selectedItem instanceof ListOption && ((ListOption) selectedItem).isSelecting()) {
                 menu.modifySelected(false);
             }
+            else if (selectedItem instanceof MultiModifier && ((MultiModifier) selectedItem).isModifying()) {
+                menu.modifySelected(false);
+            }
             else {
                 menu.nextItem();
             }
@@ -102,7 +120,12 @@ public class MenuSystem {
         if (selectPressed) {
             menu.executeSelected();
         }
-
+        if (leftPressed) {
+            menu.prevrow();
+        }
+        if (rightPressed) {
+            menu.nextrow();
+        }
         lastUp = gamepad.dpad_up;
         lastDown = gamepad.dpad_down;
         lastSelect = gamepad.a;
