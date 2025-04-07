@@ -60,21 +60,21 @@ public class MenuSystem {
             }
             else if (item instanceof MultiModifier) {
                 MultiModifier m_modifier = (MultiModifier) item;
-                String telemetryOutput = "";
+                String telemetryOutput = ""+ prefix;
                 for (int j = 0; j < m_modifier.getitems().length; j++) {
-                    String selectingText = m_modifier.isModifying() ? "[" : "";
-                    String selectingTexttwo = m_modifier.isModifying() ? "]" : "";
                     // Put brackets around selected rows
                     String indextext = (m_modifier.getrow() == j) ? "(" : " ";
                     String indextexttwo = (m_modifier.getrow() == j) ? ")" : " ";
+                    String selectingText = (m_modifier.getrow() == j && m_modifier.isModifying()) ? "[" : "";
+                    String selectingTextTwo = (m_modifier.getrow() == j && m_modifier.isModifying()) ? "]" : "";
                     // Telemetry output for this
-                    telemetryOutput = telemetryOutput + indextext + selectingText + m_modifier.getrowDisplayName() + m_modifier.getrowValue(i) + selectingTexttwo + indextexttwo;
+                    telemetryOutput = telemetryOutput + indextext + selectingText + m_modifier.getrowDisplayName(j) + m_modifier.getrowValue(j) + selectingTextTwo + indextexttwo;
                 }
                 telemetry.addLine(telemetryOutput);
             }
             else if (item instanceof Toggleable) {
                 Toggleable tgle = (Toggleable) item;
-                telemetry.addLine(tgle.getDisplayName());
+                telemetry.addLine(prefix + tgle.getDisplayName());
             }
         }
         telemetry.update();

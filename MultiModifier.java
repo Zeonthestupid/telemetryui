@@ -16,15 +16,17 @@ public class MultiModifier {
         return displayName;
     }
 
-    public String getrowDisplayName() {
+    public String getrowDisplayName(int row) {
         return options[row].getDisplayName();
     }
 
     public void nextrow() {
-        row += 1;
+        row = (row + 1 + options.length) % options.length;
+
     }
     public void prevrow() {
-        row -= 1;
+        row = (row - 1);
+        if (row < 0) {row = 0;}
     }
     public int getrow() {
         return row;

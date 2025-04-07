@@ -158,7 +158,7 @@ public class Menu {
         Object selectedItem = menuItems.get(selectedIndex);
         if (selectedItem instanceof MultiModifier) {
             MultiModifier mmod = (MultiModifier) selectedItem;
-            if (mmod.isModifying()) {
+            if (!mmod.isModifying()) {
                 mmod.prevrow();
             }
         }
