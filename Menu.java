@@ -68,6 +68,14 @@ public class Menu {
         menuItems.add(toggleable);
     }
 
+    public Toggleable getToggleOption(String offname){
+        for (Toggleable toggleable : toggleables) {
+            if (toggleable.getOffname().equals(offname)){
+                return toggleable;
+            }
+        }
+        return null;
+    }
 
     public ListOption getListOption(String displayName) {
         for (ListOption list : lists) {
@@ -141,6 +149,25 @@ public class Menu {
             if (mmod.isModifying()) {
                 if (increase) mmod.increase();
                 else mmod.decrease();
+            }
+        }
+    }
+
+    public void preciceModifySelected (boolean increase) {
+        Object selectedItem = menuItems.get(selectedIndex);
+        if (selectedItem instanceof Modifier) {
+            Modifier modifier = (Modifier) selectedItem;
+            if (modifier.isModifying()) {
+                if (increase) modifier.p_increase();
+                else modifier.p_decrease();
+            }
+        }
+
+        else if (selectedItem instanceof MultiModifier) {
+            MultiModifier mmod = (MultiModifier) selectedItem;
+            if (mmod.isModifying()) {
+                if (increase) mmod.p_increase();
+                else mmod.p_decrease();
             }
         }
     }

@@ -43,6 +43,14 @@ public class MultiModifier {
     public void decrease() { //Decrease selected value
         options[row].decrease();
     }
+
+    public void p_increase() { //Increase selected value
+        options[row].p_increase();
+    }
+
+    public void p_decrease() { //Decrease selected value
+        options[row].p_decrease();
+    }
     public Modifier[] getitems() {
         return options;
     }

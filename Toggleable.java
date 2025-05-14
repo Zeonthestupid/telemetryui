@@ -18,7 +18,9 @@ public class Toggleable {
             return this.offname;
         }
     }
-
+    public String getOffname() {
+        return this.offname;
+    }
     public boolean getstate() {
         return state;
     }

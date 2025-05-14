@@ -84,18 +84,21 @@ public class MenuSystem {
         boolean selectPressed = gamepad.a && !lastSelect;
         boolean leftPressed = gamepad.dpad_left && !lastLeft;
         boolean rightPressed = gamepad.dpad_right && !lastRight;
+        boolean focusPressed = gamepad.left_bumper;
 
         Object selectedItem = menu.getMenuItems().get(menu.getSelectedIndex());
 
         if (upPressed) {
             if (selectedItem instanceof Modifier && ((Modifier) selectedItem).isModifying()) {
-                menu.modifySelected(true);
+                if (focusPressed) menu.preciceModifySelected(true);
+                else menu.modifySelected(true);
             }
             else if (selectedItem instanceof ListOption && ((ListOption) selectedItem).isSelecting()) {
                 menu.modifySelected(true);
             }
             else if (selectedItem instanceof MultiModifier && ((MultiModifier) selectedItem).isModifying()) {
-                menu.modifySelected(true);
+                if (focusPressed) menu.preciceModifySelected(true);
+                else menu.modifySelected(true);
             }
             else {
                 menu.previousItem();
@@ -104,13 +107,15 @@ public class MenuSystem {
 
         if (downPressed) {
             if (selectedItem instanceof Modifier && ((Modifier) selectedItem).isModifying()) {
-                menu.modifySelected(false);
+                if (focusPressed) menu.preciceModifySelected(false);
+                else menu.modifySelected(false);
             }
             else if (selectedItem instanceof ListOption && ((ListOption) selectedItem).isSelecting()) {
                 menu.modifySelected(false);
             }
             else if (selectedItem instanceof MultiModifier && ((MultiModifier) selectedItem).isModifying()) {
-                menu.modifySelected(false);
+                if (focusPressed) menu.preciceModifySelected(false);
+                else menu.modifySelected(false);
             }
             else {
                 menu.nextItem();
