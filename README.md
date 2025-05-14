@@ -33,15 +33,17 @@ menu.addDisplayItem("1", "Hello"); // example item
 ```
 
 You use different items from menus (Basic, advanced and Wrappers) to fully create dynamic menus.
+
+Using the gamepad you set, you use the dpad to move through the menus, and a to select / precise modify if that's enabled.
 ### Basic types (Actions, Displayitems)
-Actions:
+**Actions:**
 ```
 // use this method to make a new action. it takes in a runnable and a displayname
 menu.addAction("Displayname", () -> motor.setpower(xyz));
 ```
 This action serves as a clickable function, and can run practically anything.
 
-DisplayItems:
+**DisplayItems:**
 ```
 // Display items can be created with an ID assigned
 menu.addDisplayItem("id", "Text to display");
@@ -52,7 +54,7 @@ Display items can be menu descriptions or anything that needs a static / dynamic
 These are useful for both conventional telemetry (using changedisplay) or for displaying one thing.
 You can use this for classic telemetry data as it works with the menu!
 ### Advanced types (Modifiers, Togglables ListOptions)
-Modifiers:
+**Modifiers:**
 ```
 menu.addModifier("Displayname", 5, 1);
 ```
@@ -72,7 +74,7 @@ To get the value of the mod, use:
 Modifier mod = menu.getMod("DisplayName");
 x = mod.getValue();
 ```
-Togglables:
+**Togglables:**
 ```
 menu.addToggleable("OffToggle", "OnToggle", false);
 ```
@@ -86,7 +88,7 @@ test.getstate();
 ```
 Make sure to use the falsename when getting
 
-ListOptions:
+**ListOptions:**
 ```
 menu.addListOption("DisplayName", "optionone", "optiontwo");
 ```
@@ -108,7 +110,7 @@ if thats more of your jam.
 Wrappers allow you to fit multiple of things into one menu object.
 They do have some limitations (like horizontal size)
 
-MultiModifier:
+**MultiModifier:**
 ```
 menu.addmultimodifier("pose", new Modifier("x", 64, 1, 0.1), new Modifier("y", 64, 1, 0.1), new Modifier("r", 0, 15, 1));
 ```
