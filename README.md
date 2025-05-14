@@ -12,7 +12,7 @@ Multimodifier: Wrapped modifiers that allow for easy multi-value functions (ex. 
 
 # Installation
 
-Follow the steps listed on here! \
+Follow the steps listed on here: \
 \
 [![](https://jitpack.io/v/Zeonthestupid/telemetryui.svg)](https://jitpack.io/#Zeonthestupid/telemetryui) 
 
