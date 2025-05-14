@@ -44,6 +44,11 @@ public class Menu {
         modifiers.add(modifier);
         menuItems.add(modifier);
     }
+    public void addModifier(String displayName, double initialValue, double stepSize, double pstepsize) {
+        Modifier modifier = new Modifier(displayName, initialValue, stepSize, pstepsize);
+        modifiers.add(modifier);
+        menuItems.add(modifier);
+    }
 
     public void addDisplayItem(String id , String displayName) {
         displayItem displayitem = new displayItem(id, displayName);
