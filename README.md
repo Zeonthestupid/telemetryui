@@ -1,7 +1,9 @@
 # Tuilib (TelemetryUI)
-Currently in the process of migrating to V2 version.
+TelemetryUI is split into three sections
+1. Installation
+2. Basic usage
+3. Advanced / Wrapped modules
 
-Assumed launch date : 8-15!!!
 
 ## Wanna help?
 Shoot me an email - micahwpschmidt@gmail.com
