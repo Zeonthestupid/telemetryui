@@ -1,15 +1,7 @@
-package telemetryui;
+package telemetryui.v1;
 
 
-// BASE CLASS
-
-/*
-WARNING : Modifying this class can (and most likely will) break functionality.
-
-Since this is an integral part of the system, it is important to keep as is.
-
-If you are looking to create a new menu subclass type, I would suggest creating a NEW class, and building it from there.
- */
+// MIGRATION FINISHED!
 
 public class ListOption {
     private final String displayName;

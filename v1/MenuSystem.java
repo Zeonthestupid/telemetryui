@@ -1,4 +1,4 @@
-package telemetryui;
+package telemetryui.v1;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.robotcore.external.Telemetry;

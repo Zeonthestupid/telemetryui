@@ -1,4 +1,4 @@
-package telemetryui;
+package telemetryui.v1;
 
 public class displayItem {
     private String displayName;

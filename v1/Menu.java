@@ -1,6 +1,4 @@
-package telemetryui;
-
-import androidx.lifecycle.MutableLiveData;
+package telemetryui.v1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +84,15 @@ public class Menu {
         for (ListOption list : lists) {
             if (list.getDisplayName().equals(displayName)) {
                 return list;
+            }
+        }
+        return null;
+    }
+
+    public Modifier getMod(String displayName) {
+        for (Modifier mod: modifiers) {
+            if (mod.getDisplayName().equals(displayName)) {
+                return mod;
             }
         }
         return null;
