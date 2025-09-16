@@ -31,21 +31,24 @@ In order to add an instance of telemetryUI to your opMode, you may use the sampl
 ```java
 import telemetryui.core.*;
 
-List<tuiModule> display01;
-displayBuffer mainmenu = new displayBuffer("0. Main Menu");
-displayManager displaymanager = new displayManager(telemetry, gamepad1);
+    List<tuiModule> display01 = new ArrayList<>();
+    displayBuffer mainmenu = new displayBuffer("0. Main Menu");
+    displayManager displaymanager;
 
-@Override
-public void init() {
-    display01.add(new Action("StopRobot", this::requestOpModeStop));
-    displaymanager.loadBuffer(mainmenu);
-    mainmenu.setItems(display01);
-}
+    @Override
+    public void init() {
 
-@Override
-public void loop() {
-    displaymanager.update()
-}
+        displaymanager = new displayManager(telemetry, gamepad1);
+        display01.add(new Action("Stop Robot", this::requestOpModeStop));
+        displaymanager.loadBuffer(mainmenu);
+        mainmenu.setItems(display01);
+
+    }
+
+    @Override
+    public void loop() {
+        displaymanager.update();
+    }
 ```
 
 For documentation on how to use the base, or decorated modules, visit our [docs](https://25929.vercel.app/docs/telemetryui/index.html)
