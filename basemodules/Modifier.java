@@ -42,8 +42,13 @@ public class Modifier extends tuiModule {
         return !isModifying;
     }
 
+    @Override
     public Double getValue() {
         return value;
     }
 
+    @Override
+    public String display() {
+            return displayName + (isModifying? "[" : " ") + value + (isModifying? "]": " ");
+    }
 }

@@ -34,11 +34,18 @@ public class displayBuffer {
         return menuItems.get(selectedIndex);
     }
     public void nextItem() {
-        selectedIndex = (selectedIndex + 1) % menuItems.size();
+
+        selectedIndex = (selectedIndex - 1 + menuItems.size()) % menuItems.size();
+        if (getCurrent().isSkipping()) {
+            nextItem();
+        }
     }
 
     public void previousItem() {
-        selectedIndex = (selectedIndex - 1 + menuItems.size()) % menuItems.size();
+        selectedIndex = (selectedIndex + 1) % menuItems.size();
+        if (getCurrent().isSkipping()) {
+            previousItem();
+        }
     }
 
 

@@ -13,6 +13,7 @@ public abstract class tuiModule {
 
     public boolean inputReleased() {return true;}
 
+    public boolean isSkipping() {return false;}
 
     public String display() {
         return "DisplayNotOverridden.";
@@ -26,6 +27,8 @@ public abstract class tuiModule {
     public Object getValue() {
         return null;
     }
+
+
 
 
 

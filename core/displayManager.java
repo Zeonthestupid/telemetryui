@@ -30,36 +30,47 @@ public class displayManager {
     String prevbuffer;
     String postbuffer;
 
-    public void loadBuffer(displayBuffer db) {
-        this.loadedbuffer = db;
-    }
     public displayManager(Telemetry telemetry, Gamepad gamepad) {
         this.telemetry = telemetry;
         this.gamepad = gamepad;
 
     }
 
+
+    public void loadBuffer(displayBuffer db) {
+        this.loadedbuffer = db;
+    }
+
+
     public void update() {
         if (this.enabled == 1) {
             telemetry.addLine(decoMenu + decoMenuPadding + loadedbuffer.getName() + decoMenuPadding + decoMenu);
             // Adds menu (1/3 buffers)
 
-            for (int i = 0; i < this.loadedbuffer.getLength(); i++) {
-                tuiModule item = loadedbuffer.getItems().get(i);
+            if (loadedbuffer == null || loadedbuffer.getItems().isEmpty()) {
+                telemetry.addLine("No menu items");
+                telemetry.update();
+                return;
 
-                if (item != null) {
-                    Boolean isSelected = loadedbuffer.getselectedIndex()==i;
-                    prevbuffer = isSelected? decoPreSelect : "  ";
-                    postbuffer = isSelected? decoPostSelect: "";
-                    if (item.mldisplay()==null) {
-                        telemetry.addLine(prevbuffer + item.display() + postbuffer);
-                    } else {
-                        List<String> ml = item.mldisplay();
-                        for (int j=0; j< ml.size(); j++) {
-                            telemetry.addLine(ml.get(j));
+            } else {
+
+                for (int i = 0; i < this.loadedbuffer.getLength(); i++) {
+                    tuiModule item = loadedbuffer.getItems().get(i);
+
+                    if (item != null) {
+                        Boolean isSelected = loadedbuffer.getselectedIndex() == i;
+                        prevbuffer = isSelected ? decoPreSelect : "  ";
+                        postbuffer = isSelected ? decoPostSelect : "";
+                        if (item.mldisplay() == null) {
+                            telemetry.addLine(prevbuffer + item.display() + postbuffer);
+                        } else {
+                            List<String> ml = item.mldisplay();
+                            for (int j = 0; j < ml.size(); j++) {
+                                telemetry.addLine(ml.get(j));
+                            }
                         }
+                        // Adds non MLdisplay Items
                     }
-                    // Adds non MLdisplay Items
                 }
             }
 
