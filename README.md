@@ -14,9 +14,6 @@ Or, if you'd rather, you can clone the repo directly into your project folder!
 
 ## Getting Started
 
-
-# TelemetryUI
-
 TelemetryUI is split into four different sections:
 
 - **Core modules** (Which makeup the functionality and must be imported in any project using TUI)
