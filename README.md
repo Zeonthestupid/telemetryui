@@ -14,6 +14,9 @@ Or, if you'd rather, you can clone the repo directly into your project folder!
 
 ## Getting Started
 
+To use TUI, use the d-pad on your controller, plus the A button to select.
+
+
 TelemetryUI is split into four different sections:
 
 - **Core modules** (Which makeup the functionality and must be imported in any project using TUI)
@@ -24,7 +27,6 @@ TelemetryUI is split into four different sections:
 
 - **Wrapped modules** (Which are ways to wrap other modules into things like dropdowns and columns)
 
----
 
 In order to add an instance of telemetryUI to your opMode, you may use the sample code below:
 
