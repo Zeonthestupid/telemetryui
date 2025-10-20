@@ -7,9 +7,7 @@ Primarily, it is used to create interactive menus that can run functions and cha
 
 ## Installation
 
-Our jitpack [Package](https://jitpack.io/#Zeonthestupid/telemetryui) is generally more recommended.
-
-Or, if you'd rather, you can clone the repo directly into your project folder!
+We're working on hosting a maven package. For now, clone the repo directly into your project folder!
 
 
 ## Getting Started
