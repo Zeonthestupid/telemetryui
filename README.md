@@ -1,5 +1,5 @@
 # Notice
-To prepare for a large update, we are updating telemetryui to allow for additional functionality. Expect the library size to go up slightly, however there shouldn't be any breaking changes!
+To prepare for a large library that depends on telemetryui, we are updating some fundimental code to allow for additional functionality. Expect the library size to go up slightly, however there shouldn't be any breaking changes!
 ---
 For full info, visit our [docs](https://25929.vercel.app/docs/telemetryui/index.html)
 
