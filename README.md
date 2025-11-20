@@ -1,3 +1,6 @@
+# Notice
+To prepare for a large update, we are updating telemetryui to allow for additional functionality. Expect the library size to go up slightly, however there shouldn't be any breaking changes!
+---
 For full info, visit our [docs](https://25929.vercel.app/docs/telemetryui/index.html)
 
 TelemetryUI is built for FTC teams to utilize the telemetry system beyond just displaying data. We tried to provide as many features as possible to make your telemetry system go from okay, to great!
